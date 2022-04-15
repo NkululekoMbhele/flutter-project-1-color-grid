@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -14,74 +13,96 @@ class MyApp extends StatelessWidget {
     //var width = screenSize.width;
     //var height = screenSize.height;
 
+    // The Flexible widget inside the containers row ensures that we don't worry about the device screen width
+    // This resizes the container to fill the extra ba
+    //We need to come with a similar solution for the height
+
     return MaterialApp(
       title: 'Welcome to Flutter',
       home: Scaffold(
-        appBar: null,
-        /*AppBar (
+          appBar: null,
+          /*AppBar (
           title: const Text('Color Boxes'),
           backgroundColor: Colors.deepOrangeAccent,
         ),*/
-        body:Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Container(
-                  width: 160,
-                  height: 188,
-                  decoration: BoxDecoration(
-                    color: Colors.blueAccent,
-                    //border: Border.all()
+          body:Column(
+            mainAxisSize: MainAxisSize.max, // occupy all the y-axis space
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Flexible(
+                      fit: FlexFit.tight,
+                      child:Container(
+                        width: 100,
+                        height: 188,
+                        decoration: BoxDecoration(
+                            color: Colors.blueAccent
+                        ),
+                      )
                   ),
-                ),
-                Container(
-                  width: 160,
-                  height: 188,
-                  decoration: BoxDecoration(
-                    color: Colors.pink,
-                   // border: Border.all()
+                  Flexible(
+                    fit:FlexFit.tight,
+                    child: Container(
+                      width: 100,
+                      height: 188,
+                      decoration: BoxDecoration(
+                          color: Colors.pink
+                      ),
+                    ),
                   ),
+                ],
+              ),
+              Row(
+                  children: <Widget>[
+                    Flexible(
+                        fit: FlexFit.tight,
+                        child:Container(
+                          width: 100,
+                          height: 190,
+                          decoration: BoxDecoration(
+                              color: Colors.orangeAccent
+                          ),
+                        )
+                    ),
+                    Flexible(
+                      fit:FlexFit.tight,
+                      child: Container(
+                        width: 100,
+                        height: 190,
+                        decoration: BoxDecoration(
+                            color: Colors.green
+                        ),
+                      ),
+                    ),
+                  ]
+              ),
+                  Row(
+                      children: <Widget>[
+                      Flexible(
+                          fit: FlexFit.tight,
+                          child:Container(
+                            width: 100,
+                            height: 190,
+                            decoration: BoxDecoration(
+                              color: Colors.black
+                            ),
+                          )
+                      ),
+                      Flexible(
+                        fit:FlexFit.tight,
+                        child: Container(
+                          width: 100,
+                          height: 190,
+                          decoration: BoxDecoration(
+                              color: Colors.yellow
+                          ),
+                        ),
+                      ),
+                  ],
                 )
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Container(
-                  width: 160,
-                  height: 190,
-                  decoration: BoxDecoration(
-                    color: Colors.deepOrangeAccent
-                  ),
-                ),
-                Container(
-                  width: 160,
-                  height: 190,
-                  decoration: BoxDecoration(
-                    color: Colors.green
-                  ),
-                )
-              ]
-            ),
-            Row(
-              children: <Widget>[
-                Container(
-                  width: 160,
-                  height: 190,
-                  decoration: BoxDecoration(
-                      color: Colors.black
-                  ),
-                ),
-                Container(
-                  width: 160,
-                  height: 190,
-                  decoration: BoxDecoration(
-                      color: Colors.purple
-                  ),
-                ),
-              ],
-            )
-          ],
-        )
+
+            ],
+          )
       ),
     );
   }
