@@ -1,17 +1,17 @@
+/**
+ * Sphesihle Madonsela
+ * A Simple Flutter App
+ * The year is 2022
+ */
+
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(MyApp());
 
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-
-    //var screenSize = MediaQuery.of(context).size;
-    //var width = screenSize.width;
-    //var height = screenSize.height;
 
     // The Flexible widget inside the containers row ensures that we don't worry about the device screen width
     // This resizes the container to fill the extra ba
@@ -19,91 +19,113 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Welcome to Flutter',
-      home: Scaffold(
-          appBar: null,
-          /*AppBar (
-          title: const Text('Color Boxes'),
-          backgroundColor: Colors.deepOrangeAccent,
-        ),*/
-          body:Column(
-            mainAxisSize: MainAxisSize.max, // occupy all the y-axis space
+      home: MyHomePage() // (2) then we put the homepage inside material App
+    );
+  }
+}
+// (1) This is where we implement our homepage, the Scaffold is here
+class MyHomePage extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: null,
+      body: Column(
+        children: <Widget>[
+          First(), Second(), Third() // children of our Column i.e in this case
+        ],
+      )
+    );
+  }
+}
+
+/// The list of Widget we, going to use, this separation makes it easier to debug our program and for cleaner code
+/// if First() had an issue we just fix it here
+class First extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+      return Row(
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Flexible(
-                      fit: FlexFit.tight,
-                      child:Container(
+                Flexible(
+                    fit: FlexFit.tight,
+                    child:Container(
                         width: 100,
                         height: 188,
                         decoration: BoxDecoration(
-                            color: Colors.blueAccent
+                          color: Colors.blueAccent
                         ),
-                      )
-                  ),
-                  Flexible(
+                    )
+                ),
+                Flexible(
                     fit:FlexFit.tight,
                     child: Container(
-                      width: 100,
-                      height: 188,
-                      decoration: BoxDecoration(
-                          color: Colors.pink
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                  children: <Widget>[
-                    Flexible(
-                        fit: FlexFit.tight,
-                        child:Container(
-                          width: 100,
-                          height: 190,
-                          decoration: BoxDecoration(
-                              color: Colors.orangeAccent
-                          ),
-                        )
-                    ),
-                    Flexible(
-                      fit:FlexFit.tight,
-                      child: Container(
                         width: 100,
-                        height: 190,
+                        height: 188,
                         decoration: BoxDecoration(
-                            color: Colors.green
+                            color: Colors.pink
                         ),
-                      ),
                     ),
-                  ]
-              ),
-                  Row(
-                      children: <Widget>[
-                      Flexible(
-                          fit: FlexFit.tight,
-                          child:Container(
-                            width: 100,
-                            height: 190,
-                            decoration: BoxDecoration(
-                              color: Colors.black
-                            ),
-                          )
-                      ),
-                      Flexible(
-                        fit:FlexFit.tight,
-                        child: Container(
-                          width: 100,
-                          height: 190,
-                          decoration: BoxDecoration(
-                              color: Colors.yellow
-                          ),
-                        ),
-                      ),
-                  ],
-                )
-
+                ),
             ],
-          )
-      ),
+          );
+      }
+}
+
+class Second extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Row(
+      children: <Widget>[
+        Flexible(
+            fit: FlexFit.tight,
+            child:Container(
+              width: 100,
+              height: 188,
+              decoration: BoxDecoration(
+                  color: Colors.orangeAccent
+              ),
+            )
+        ),
+        Flexible(
+          fit:FlexFit.tight,
+          child: Container(
+            width: 100,
+            height: 188,
+            decoration: BoxDecoration(
+                color: Colors.green
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class Third extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Row(
+      children: <Widget>[
+        Flexible(
+            fit: FlexFit.tight,
+            child:Container(
+              width: 100,
+              height: 188,
+              decoration: BoxDecoration(
+                  color: Colors.black
+              ),
+            )
+        ),
+        Flexible(
+          fit:FlexFit.tight,
+          child: Container(
+            width: 100,
+            height: 188,
+            decoration: BoxDecoration(
+                color: Colors.amberAccent
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
