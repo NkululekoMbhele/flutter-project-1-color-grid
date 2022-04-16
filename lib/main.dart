@@ -19,6 +19,8 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Welcome to Flutter',
+      theme: ThemeData(),
+      darkTheme: ThemeData.dark(),
       home: MyHomePage() // (2) then we put the homepage inside material App
     );
   }
