@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     //We need to come with a similar solution for the height
 
     return MaterialApp(
-      title: 'Welcome to Flutter',
+      title: 'Project 1',
       theme: ThemeData(),
       darkTheme: ThemeData.dark(),
       home: MyHomePage() // (2) then we put the homepage inside material App
@@ -33,7 +33,9 @@ class MyHomePage extends StatelessWidget{
       appBar: null,
       body: Column(
         children: <Widget>[
-          First(), Second(), Third() // children of our Column i.e in this case
+          Expanded(child: First()),
+          Expanded(child: Second()),
+          Expanded(child: Third()) // children of our Column i.e in this case
         ],
       )
     );
@@ -50,21 +52,39 @@ class First extends StatelessWidget{
                 Flexible(
                     fit: FlexFit.tight,
                     child:Container(
-                        width: 100,
-                        height: 188,
-                        decoration: BoxDecoration(
-                          color: Colors.blueAccent
+                        color: Colors.blueAccent[700],
+                        child: Center(
+                          child:
+                            Text('1',
+                              style:
+                              TextStyle(
+                                fontSize: 70,
+                                fontStyle: FontStyle.italic,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+
+                              ),
+                            ),
                         ),
                     )
                 ),
                 Flexible(
                     fit:FlexFit.tight,
                     child: Container(
-                        width: 100,
-                        height: 188,
-                        decoration: BoxDecoration(
-                            color: Colors.pink
+                      color: Colors.purpleAccent,
+                      child: Center(
+                        child:
+                        Text('2',
+                          style:
+                          TextStyle(
+                            fontSize: 70,
+                            fontStyle: FontStyle.italic,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+
+                          ),
                         ),
+                      ),
                     ),
                 ),
             ],
@@ -80,21 +100,39 @@ class Second extends StatelessWidget{
         Flexible(
             fit: FlexFit.tight,
             child:Container(
-              width: 100,
-              height: 188,
-              decoration: BoxDecoration(
-                  color: Colors.orangeAccent
-              ),
+                color: Colors.orangeAccent,
+                child: Center(
+                  child:
+                  Text('3',
+                    style:
+                    TextStyle(
+                      fontSize: 70,
+                      fontStyle: FontStyle.italic,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+
+                    ),
+                  ),
+                ),
             )
         ),
         Flexible(
           fit:FlexFit.tight,
           child: Container(
-            width: 100,
-            height: 188,
-            decoration: BoxDecoration(
-                color: Colors.green
-            ),
+              color: Colors.red,
+              child: Center(
+                child:
+                Text('4',
+                  style:
+                  TextStyle(
+                    fontSize: 70,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+
+                  ),
+                ),
+              ),
           ),
         ),
       ],
@@ -110,20 +148,38 @@ class Third extends StatelessWidget{
         Flexible(
             fit: FlexFit.tight,
             child:Container(
-              width: 100,
-              height: 188,
-              decoration: BoxDecoration(
-                  color: Colors.black
-              ),
+                color: Colors.black,
+                child: Center(
+                  child:
+                  Text('5',
+                    style:
+                    TextStyle(
+                      fontSize: 70,
+                      fontStyle: FontStyle.italic,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+
+                    ),
+                  ),
+                ),
             )
         ),
         Flexible(
           fit:FlexFit.tight,
           child: Container(
-            width: 100,
-            height: 188,
-            decoration: BoxDecoration(
-                color: Colors.amberAccent
+            color: Colors.green,
+            child: Center(
+              child:
+              Text('6',
+                style:
+                TextStyle(
+                  fontSize: 70,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+
+                ),
+              ),
             ),
           ),
         ),
