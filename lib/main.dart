@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(MyApp());
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Project 1',
+      title: 'Square Game',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -19,96 +20,77 @@ class MyApp extends StatelessWidget {
           Expanded(
            child: Row(
                   children: <Widget>[
-                    Expanded(
-                      child: Container(
-                      color: Colors.blue,
-                      width: 100,
-                      child: Center(
-                        child: Text(
-                          "1",
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 70, color: Colors.white),
-                          )
-                      )
-                      ), //Container
-                    ),
-                    Expanded(
-                      child: Container(
-                      color: Colors.purple,
-                      width: 100,
-                      child: Center(
-                      child: Text(
-                        "2",
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 70, color: Colors.white),
-                        )
-                      )
-                      ), //Container
-                    ),
+                    SquareWidget("1", Colors.blue),
+                    SquareWidget("2", Colors.purple),
                   ], //<Widget>[]
                 ),
            ), //Row
            Expanded(
            child: Row(
                   children: <Widget>[
-                    Expanded(
-                      child: Container(
-                      color: Colors.orange,
-                      width: 100,
-                      child: Center(
-                        child: Text(
-                          "3",
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 70, color: Colors.white),
-                        ),
-                      ),
-                      ), //Container
-                    ),
-                    Expanded(
-                      child: Container(
-                      color: Colors.red,
-                      width: 100,
-                      child: Center(
-                        child: Text(
-                          "4",
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 70, color: Colors.white),
-                        ),
-                      ),
-                      ), //Container
-                    ),
+                    SquareWidget("3", Colors.orange),
+                    SquareWidget("4", Colors.red),
                   ], //<Widget>[]
                 ),
             ),
             Expanded( //Row
            child: Row(
                   children: <Widget>[
-                    Expanded(
-                      child: Container(
-                      color: Colors.black,
-                      width: 100,
-                        child: Center(
-                        child: Text(
-                          "5",
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 70, color: Colors.white),
-                        ),
-                      ),
-                      ), //Container
-                    ),
-                    Expanded(
-                      child: Container(
-                      color: Colors.green,
-                      width: 100,
-                      child: Center(
-                        child: Text(
-                          "6",
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 70, color: Colors.white),
-                        ),
-                      ),
-                      ), //Container
-                    ),
+                    SquareWidget("5", Colors.black),
+                    SquareWidget("6", Colors.green),
                   ], //<Widget>[]
                 ), //Row
             ),
           ],
         )
       )
+    );
+  }
+}
+
+class SquareWidget extends StatefulWidget {
+  final String text;
+  final Color colour;
+  SquareWidget(this.text, this.colour);
+
+  @override
+  _SquareWidgetState createState() => _SquareWidgetState();
+}
+class _SquareWidgetState extends State<SquareWidget> {
+  int _counter = 0;
+  bool _isTrue = true;
+  List<Color> arr = [Colors.black, Colors.orange, Colors.blue, Colors.red];
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+            child:InkWell(
+              onTap: () {
+                   Future.delayed(Duration(seconds: 3), (){
+                         
+                  Random random = new Random();
+                  int randomNumber = random.nextInt(4);
+                  setState(() {
+                  _counter = randomNumber;
+                  _isTrue = !_isTrue;
+                });
+              });
+              },
+           child: Container(
+              color: arr[_counter],
+              width: 100,
+              child: Center(
+                child: Text(
+                  '$_counter',
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 70, color: Colors.white),
+                ),
+            ),
+            ), //Container
+          ),
     );
   }
 }
